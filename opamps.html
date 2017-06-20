@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<body class="container">
+    <h3>Test:</h3>
+    <canvas id="myChart" height="200">yo</canvas>
+    </div>
+<!--     <p>This chart has been built using this data:</p>
+    <div>{{ data_prob.to_html(classes ="table table-striped") | safe }}</div> -->
+
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+var data = {
+    labels: ["MCP","LM","MAX","OPA","LT","AD"],
+    //labels: {{ labels | safe }},
+    datasets: [
+        {
+            //label: "ATMEGA",
+            backgroundColor: 'rgba(54, 235, 78, 0.2)',
+            borderColor: 'rgba(54, 235, 78, 1)',
+            borderWidth: 1.5,
+            fill: false,
+            //data: {{ data | safe }},
+            data: [0.694,0.84,1.933,2.004,3.0771,3.5329]
+        }
+    ]
+};
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myLineChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+
+    options: {
+                responsive: true,
+                title:{
+                    display:true,
+                    text:'Price for common op-amp families',
+                    fontSize: 30,
+                    fontFamily: 'Lato'
+                },
+                // tooltips: {
+                //     mode: 'index',
+                //     intersect: false,
+                // },
+                // hover: {
+                //     mode: 'nearest',
+                //     intersect: true
+                // },
+
+                    legend: {
+                        display: false,
+                        position: 'right',
+                        labels: {
+                            //fontColor: 'rgb(255, 99, 132)',
+                            fontSize: 20
+                        }
+                    } ,
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        barThickness: 60,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Popular Op-Amp Series',
+                            fontSize: 25,
+                            fontFamily: 'Lato'
+
+                        },
+                        ticks: {
+                            fontSize: 25
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Price for 1 (in $)',
+                            fontSize: 25,
+                            fontFamily: 'Lato'
+                        },
+                        ticks: {
+                            fontSize: 25
+                        }
+                    }]
+                }
+}
+});
+
+</script>
+
+
+</html>

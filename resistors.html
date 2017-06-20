@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<body class="container">
+    <h3>Test:</h3>
+    <canvas id="myChart" height="200">yo</canvas>
+    </div>
+<!--     <p>This chart has been built using this data:</p>
+    <div>{{ data_prob.to_html(classes ="table table-striped") | safe }}</div> -->
+
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+var data = {
+    labels: ["0402", "0603", "0805","1206"],
+    datasets: [
+        {
+            label: "Yageo RC series",
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            data: [2.235,2.49,3.98,6.05]
+        },
+        {
+            label: "Panasonic ERJ series",
+            backgroundColor: 'rgba(235,54,54, 0.2)',
+            borderColor: 'rgba(235,54,54, 1)',
+            borderWidth: 1,
+            data: [4,3.8,7,9.29]
+        },
+        {
+            label: "Vishay CRCW series",
+            backgroundColor: 'rgba(235,162,54, 0.2)',
+            borderColor: 'rgba(235,162,54, 1)',
+            borderWidth: 1,
+            data: [14,12,19,22]
+        }
+    ]
+};
+
+var ctx = document.getElementById("myChart").getContext("2d");
+var mybarChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+        //barValueSpacing: 20,
+        scales: {
+            xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Size',
+                            fontSize: 25,
+                            fontFamily: 'Lato'
+
+                        },
+                        ticks: {
+                            fontSize: 25
+                        }
+                    }],
+            yAxes: [{
+                scaleLabel: {
+                            display: true,
+                            labelString: 'Price for 1000 (in $)',
+                            fontSize: 25,
+                            fontFamily: 'Lato'
+
+                        },
+                ticks: {
+                    min: 0,
+                    fontSize: 25
+
+                }
+            }]
+        },
+        title:{
+                    display:true,
+                    text:'Price vs Size for common resistor families',
+                    fontSize: 30,
+                    fontFamily: 'Lato'
+                },
+        legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            //fontColor: 'rgb(255, 99, 132)',
+                            fontSize: 15
+                        }
+                    }
+    }
+});
+
+</script>
+
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<body class="container">
+    <h3>Test:</h3>
+    <canvas id="myChart" height="200">yo</canvas>
+    </div>
+<!--     <p>This chart has been built using this data:</p>
+    <div>{{ data_prob.to_html(classes ="table table-striped") | safe }}</div> -->
+
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+<script>
+var data = {
+    "labels": [
+      "Ceramic",
+      "Tantalum",
+      "Aluminum Electrolytic",
+      "Film",
+      "Mica"
+    ],
+    "datasets": [{
+      "label": "Price",
+      "fill": false,
+      yAxisID: "y-axis-0",
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 3,
+      "data": [
+        0.0178,
+        0.209,
+        0.13976,
+        0.602,
+        2.414
+      ]
+    }, {
+      "label": "Availability",
+      "fill": false,
+      yAxisID: "y-axis-1",
+      backgroundColor: 'orange',
+      borderColor: 'orange',
+      borderWidth: 3,
+      "data": [
+        658838,
+        173754,
+        138653,
+        101017,
+        9201
+      ]
+    }]
+  };
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myLineChart = new Chart(ctx, {
+    type: "line",
+    data: data,
+
+     options: {
+      responsive: true,
+                title:{
+                    display:true,
+                    text:'Price and Availability for capacitor types',
+                    fontSize: 30,
+                    fontFamily: 'Lato'
+                },
+
+                legend: {
+                        display: true,
+
+                        labels: {
+                            //fontColor: 'rgb(255, 99, 132)',
+                            fontSize: 20
+                        }
+                    },
+    scales: {
+       xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Different Capacitor Types',
+                            fontSize: 25,
+                            fontFamily: 'Lato'
+
+                        },
+                        ticks: {
+                            fontSize: 18
+                        }
+                    }],
+      yAxes: [{
+        gridLines: {
+                    display:false
+                },
+                ticks: {
+                            fontSize: 20
+                        },
+        scaleLabel: {
+                            display: true,
+                            labelString: 'Price for 1 (in $)',
+                            fontSize: 25,
+                            fontFamily: 'Lato'
+                        },
+        position: "left",
+        "id": "y-axis-0"
+      }, {
+        scaleLabel: {
+                            display: true,
+                            labelString: 'Availability',
+                            fontSize: 25,
+                            fontFamily: 'Lato'
+                        },
+                        ticks: {
+
+                            fontSize: 20
+                        },
+        position: "right",
+        "id": "y-axis-1"
+      }]
+    },
+
+  }
+});
+
+</script>
+
+
+</html>

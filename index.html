@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<body class="container">
+    <h3>Test:</h3>
+    <canvas id="myChart" height="200">yo</canvas>
+    </div>
+<!--     <p>This chart has been built using this data:</p>
+    <div>{{ data_prob.to_html(classes ="table table-striped") | safe }}</div> -->
+
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+var data = {
+    labels: ["4kB","8kB","16kB","32kB","64kB","128kB","256kB","512kB"],
+    //labels: {{ labels | safe }},
+    datasets: [
+        {
+            label: "ATMEGA",
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 3,
+            fill: false,
+            //data: {{ data | safe }},
+            data: [1.58,2.19,3.11,3.9,4.75,7.628,10.671,]
+        },
+        {
+            label: "MSP430",
+            backgroundColor: 'red',
+            borderColor: 'red',
+            borderWidth: 3,
+            fill: false,
+            //data: {{ data | safe }},
+            data: [1.22,1.75,2.27,3.03,3.72,4.99,7.01,8.792]
+        },
+        {
+            label: "STM32",
+            backgroundColor: 'orange',
+            borderColor: 'orange',
+            borderWidth: 3,
+            fill: false,
+            //data: {{ data | safe }},
+            data: [,,1.66,1.94,2.47,3.24,4.27,6.84]
+        },
+        {
+            label: "PIC",
+            backgroundColor: 'green',
+            borderColor: 'green',
+            borderWidth: 3,
+            fill: false,
+            //data: {{ data | safe }},
+            data: [4.48,2.68,2.466,2.835,3.334,3.952,4.565,]
+        }
+    ]
+};
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+
+    options: {
+                responsive: true,
+                title:{
+                    display:true,
+                    text:'Price vs Memory for common MCU families',
+                    fontSize: 30,
+                    fontFamily: 'Lato'
+                },
+                // tooltips: {
+                //     mode: 'index',
+                //     intersect: false,
+                // },
+                // hover: {
+                //     mode: 'nearest',
+                //     intersect: true
+                // },
+
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            //fontColor: 'rgb(255, 99, 132)',
+                            fontSize: 20
+                        }
+                    } ,
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Memory',
+                            fontSize: 25,
+                            fontFamily: 'Lato'
+
+                        },
+                        ticks: {
+                            fontSize: 25
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Price for 1 (in $)',
+                            fontSize: 25,
+                            fontFamily: 'Lato'
+                        },
+                        ticks: {
+                            fontSize: 25
+                        }
+                    }]
+                }
+}
+});
+
+</script>
+
+
+</html>
